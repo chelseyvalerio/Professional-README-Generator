@@ -1,10 +1,10 @@
-# README
-![License Badge](https://img.shields.io/badge/License-Apache-blue)
+# Professional README Generator
+![License Badge](https://img.shields.io/badge/License-MIT-blue)
 
 
 ## Description
 
-readme generator
+This generator will allow you to create a README file with ease by way of standard template and includes all necessary README file attributes
 
 
 ## Table of Contents
@@ -24,16 +24,16 @@ index.js
 
 ## Usage
 
-when you need to generate a README
+Use as needed for any project to create a professional README file
 
 
 ## License
     
-This project is licensed under the Apache license. 
+This project is licensed under the MIT license. 
 
 ## Contributing
 
-undefined
+please email cvalerio@csog.net to contribute
 
 ## Tests
 

@@ -62,7 +62,7 @@ ${renderLicenseSection(data.license)}
 
 ## Contributing
 
-${data.contributing}
+${data.contribution}
 
 ## Tests
 
