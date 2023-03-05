@@ -1,63 +1,78 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown')
+const path = require('path');
+
 
 
 // TODO: Create an array of questions for user input
-const readmeTemplate = ({purpose, why, problem, challenges, lesson, original, future}) =>;
 
-inquirer
-.prompt ([
+   const questions = [
     {
         type: 'input',
-        message: "What is the purpose of this project?",
-        name: 'purpose',
+        message: "What is the Project Title",
+        name: 'title',
     },
     {
         type: 'input',
-        message: 'Why did you build this project?',
-        name: 'why',
+        message: "Write a description of the project",
+        name: 'description',
     },
     {
         type: 'input',
-        message: 'What problem does this project solve?',
-        name: 'problem',
+        message: 'What command should be used to install necessary dependencies?',
+        name: 'installation'
     },
     {
         type: 'input',
-        message: 'What challenges did you face with this project?',
-        name: 'challenges'
+        message: 'What are the usage guidelines for this project?',
+        name: 'usage'
+    },
+    {
+        type: 'list',
+        message: 'What license does this project use?',
+        name: 'license',
+        choices: [
+            'MIT',
+            'Apache',
+            'GPL3',
+            'none',
+        ]
     },
     {
         type: 'input',
-        message: 'What did you learn in development?',
-        name: 'lesson'
+        message: 'What command should be used to perform tests?',
+        name: 'test'
     },
     {
         type: 'input',
-        message: 'What makes this project original',
-        name: 'original'
+        message: 'What are the contribution guidelines for this project?',
+        name: 'contribution'
     },
     {
         type: 'input',
-        message: 'What features would you like to implement in the future?',
-        name: 'future'
+        message: 'What is your email?',
+        name: 'email'
     },
-])
-.then(answers => {
-    const readmeData = readmeTemplate(answers)
-    fs.writeFile('README.md', readmeData, (err) =>
-    err ? console.log(err) : console.log('new README file has been created!')
-    );
-});
+    {
+        type: 'input',
+        message: 'What is your GitHub username?',
+        name: 'GitHub'
+    },
+]
 
-
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(ReadMeFile, data) {
+    return fs.writeFileSync(path.join(process.cwd(), ReadMeFile), data);
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  inquirer.prompt(questions).then((responses) => {
+    console.log("generating README file");
+    writeToFile("README_2.md", generateMarkdown({...responses}))
+  }  )
+}
 
 // Function call to initialize app
 init();
